@@ -242,7 +242,7 @@ padding:10px;
 border-radius:10px;
 width:40%;
 max-width:450px;
-height:250px;   
+height:300px;   
 display:flex;
 justify-content:center;
 align-items:center;
@@ -264,6 +264,15 @@ right:10px;
 font-size:22px;
 color:#ffa600;
 cursor:pointer;
+z-index:10;   /* 👈 VERY IMPORTANT */
+}
+
+video{
+width:100%;
+height:100%;
+object-fit:contain;
+border-radius:8px;
+z-index:1;
 }
      
 </style>
@@ -758,6 +767,7 @@ video.currentTime=0;
      
 </body>
 </html>
+
 
 
 
