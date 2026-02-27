@@ -225,6 +225,73 @@ background-size:110%;
 }
 
 
+/* ===== HLD POPUP ===== */
+
+.hld-modal{
+display:none;
+position:fixed;
+z-index:9999;
+left:0;
+top:0;
+width:100vw;
+height:100vh;
+background:rgba(0,0,0,0.95);
+backdrop-filter:blur(6px);
+justify-content:center;
+align-items:center;
+}
+
+.hld-content{
+position:relative;
+background:#fff;
+padding:10px;
+border-radius:10px;
+animation:fadeIn 0.5s ease;
+}
+
+.hld-content img{
+max-height:90vh;
+max-width:90vw;
+border-radius:8px;
+}
+
+.close-hld{
+position:absolute;
+top:-10px;
+right:-10px;
+font-size:28px;
+background:#BB86FC;
+color:#000;
+border-radius:50%;
+padding:4px 10px;
+cursor:pointer;
+}
+
+.arch-click{
+cursor:pointer;
+}
+
+.click-indicator{
+display:block;
+font-size:12px;
+color:#ffa600;
+opacity:0.7;
+animation:pulseClick 1.5s infinite;
+}
+
+@keyframes pulseClick{
+0%{opacity:0.3;}
+50%{opacity:1;}
+100%{opacity:0.3;}
+}
+
+@keyframes fadeIn{
+from{transform:scale(0.8);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+
+
+     
 </style>
 
 </head>
@@ -320,8 +387,9 @@ Strong foundation in communication networks, signal processing and embedded syst
 <!-- LEO KPI TOOL -->
 <div class="card expandable" onclick="toggleProject(this)">
 <div class="expandable-header">
-<h4>
+<h4 onclick="openHLD('leo')" class="arch-click">
 Low Earth Orbiting Satellite Network KPI Tool
+<span class="click-indicator">Click to View HLD ▶</span>
 </h4>
 <span class="expand-icon">+</span>
 </div>
@@ -340,7 +408,10 @@ The collected KPI data was visualized using Grafana dashboards to enable real-ti
 <!-- BOTNET -->
 <div class="card expandable" onclick="toggleProject(this)">
 <div class="expandable-header">
-<h4>Botnet Prediction using Machine Learning (Bachelor’s Thesis)</h4>
+<h4 onclick="openHLD('botnet')" class="arch-click">
+Botnet Prediction using Machine Learning
+<span class="click-indicator">Click to View HLD ▶</span>
+</h4>
 <span class="expand-icon">+</span>
 </div>
 
@@ -357,7 +428,10 @@ Through this project, I gained practical experience in analyzing network traffic
 <!-- ARDUINO ROBOT -->
 <div class="card expandable" onclick="toggleProject(this)">
 <div class="expandable-header">
-<h4>Line Following & Obstacle Detection Robot using Arduino (Self Project)</h4>
+<h4 onclick="openHLD('robot')" class="arch-click">
+Line Following & Obstacle Detection Robot using Arduino
+<span class="click-indicator">Click to View HLD ▶</span>
+</h4>
 <span class="expand-icon">+</span>
 </div>
 
@@ -373,7 +447,10 @@ The system was further optimized to process real-time inputs and execute respons
 <!-- DIABETES -->
 <div class="card expandable" onclick="toggleProject(this)">
 <div class="expandable-header">
-<h4>Diabetes Prediction using Machine Learning (Mini Project)</h4>
+<h4 onclick="openHLD('diabetes')" class="arch-click">
+Diabetes Prediction using Machine Learning
+<span class="click-indicator">Click to View HLD ▶</span>
+</h4>
 <span class="expand-icon">+</span>
 </div>
 
@@ -634,6 +711,38 @@ To ensure the effectiveness and robustness of the predictive model, its performa
 
 </div>
 </div>
+
+<!-- LEO -->
+<div id="leoHLD" class="hld-modal">
+<div class="hld-content">
+<span class="close-hld" onclick="closeHLD()">✖</span>
+<img src="leo.png">
+</div>
+</div>
+
+<!-- ROBOT -->
+<div id="robotHLD" class="hld-modal">
+<div class="hld-content">
+<span class="close-hld" onclick="closeHLD()">✖</span>
+<img src="robot.png">
+</div>
+</div>
+
+<!-- BOTNET -->
+<div id="botnetHLD" class="hld-modal">
+<div class="hld-content">
+<span class="close-hld" onclick="closeHLD()">✖</span>
+<img src="botnet.png">
+</div>
+</div>
+
+<!-- DIABETES -->
+<div id="diabetesHLD" class="hld-modal">
+<div class="hld-content">
+<span class="close-hld" onclick="closeHLD()">✖</span>
+<img src="diabetes.png">
+</div>
+</div>
      
 <footer>
 <p>Email: tarunikaofficial19@gmail.com</p>
@@ -691,11 +800,21 @@ section.classList.add("fade-in");
 observer.observe(section);
 });
 
+function openHLD(project){
+document.getElementById(project+"HLD").style.display="flex";
+}
+
+function closeHLD(){
+document.querySelectorAll(".hld-modal").forEach(modal=>{
+modal.style.display="none";
+});
+}
 
 </script>
     
 </body>
 </html>
+
 
 
 
