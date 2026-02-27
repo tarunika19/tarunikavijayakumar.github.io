@@ -39,13 +39,7 @@
     transition: width 0.2s, height 0.2s, background 0.2s;
     box-shadow: 0 0 15px var(--node), 0 0 30px rgba(0,212,255,0.4);
   }
-  .cursor-ring {
-    width: 36px; height: 36px;
-    border: 1.5px solid rgba(0,212,255,0.5); border-radius: 50%;
-    position: fixed; pointer-events: none; z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: width 0.3s, height 0.3s;
-  }
+
 
   /* Canvas */
   #network-canvas {
@@ -423,18 +417,11 @@
   </div>
 </div>
 
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat"><div class="stat-num" data-target="2">0</div><div class="stat-label">Years at Tata</div></div>
-  <div class="stat"><div class="stat-num" data-target="90">0</div><div class="stat-label">JNCIA Score %</div></div>
-  <div class="stat"><div class="stat-num" data-target="5">0</div><div class="stat-label">Languages</div></div>
-  <div class="stat"><div class="stat-num" data-target="5">0</div><div class="stat-label">Projects</div></div>
-</div>
 
 <!-- ABOUT -->
 <div class="section-wrap">
   <div class="section-header reveal">
-    <span class="section-tag">// 01</span>
+    <!--<span class="section-tag">// 01</span> -->
     <h2>About Me</h2>
     <div class="section-line"></div>
   </div>
@@ -894,3 +881,4 @@ document.addEventListener('keydown', e => {
 </script>
 </body>
 </html>
+
