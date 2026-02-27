@@ -225,27 +225,42 @@ background-size:110%;
 }
 
 
-.hld-container{
-display:flex;
-flex-direction:column;
-gap:20px;
-margin-top:20px;
+
+/* HLD POPUP */
+
+.hld-modal{
+display:none;
+position:fixed;
+z-index:2000;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.85);
+backdrop-filter:blur(6px);
+justify-content:center;
+align-items:center;
 }
 
 .hld-box{
 background:#1e1e1e;
-border:1px solid #BB86FC;
+border:2px solid #BB86FC;
 padding:15px;
-border-radius:8px;
+border-radius:10px;
+color:#E0E0E0;
+min-width:200px;
 opacity:0;
-transform:translateY(30px);
+transform:translateY(40px);
 animation:fadeUp 1s forwards;
 }
 
-.hld-box:nth-child(2){animation-delay:0.3s;}
-.hld-box:nth-child(3){animation-delay:0.6s;}
-.hld-box:nth-child(4){animation-delay:0.9s;}
-.hld-box:nth-child(5){animation-delay:1.2s;}
+.hld-row{
+display:flex;
+gap:40px;
+justify-content:center;
+align-items:center;
+margin:20px;
+}
 
 @keyframes fadeUp{
 to{
@@ -254,16 +269,22 @@ transform:translateY(0);
 }
 }
 
-.hld-arrow{
-text-align:center;
-font-size:25px;
-color:#BB86FC;
-animation:blink 1s infinite alternate;
+.packet{
+width:10px;
+height:10px;
+background:#BB86FC;
+border-radius:50%;
+position:absolute;
+animation:packetMove 5s linear infinite;
+box-shadow:0 0 10px #BB86FC;
 }
 
-@keyframes blink{
-from{opacity:0.3;}
-to{opacity:1;}
+@keyframes packetMove{
+0%{top:120px;left:45%;}
+25%{top:250px;left:45%;}
+50%{top:250px;left:60%;}
+75%{top:400px;left:60%;}
+100%{top:550px;left:60%;}
 }
 
      
@@ -362,7 +383,9 @@ Strong foundation in communication networks, signal processing and embedded syst
 <!-- LEO KPI TOOL -->
 <div class="card expandable" onclick="toggleProject(this)">
 <div class="expandable-header">
-<h4>Low Earth Orbiting Satellite Network KPI Tool</h4>
+<h4 onclick="openHLD()" style="cursor:pointer;">
+LEO Satellite Network KPI Tool
+</h4>
 <span class="expand-icon">+</span>
 </div>
 
@@ -373,63 +396,6 @@ Developed a performance monitoring tool during the testing phase to evaluate key
 The probes were configured to perform periodic throughput and latency tests over satellite links, enabling the measurement of network stability and service quality under varying conditions. I assisted in setting up the testing environment, configuring probe devices, executing performance tests, and analyzing collected data to assess link behavior and identify performance variations across different deployment regions.<br>
 The collected KPI data was visualized using Grafana dashboards to enable real-time monitoring and comparative performance analysis across locations. This project provided practical exposure to distributed network monitoring, satellite communication performance evaluation, and real-time KPI visualization in emerging LEO-based communication systems during the pilot deployment stage.
 </p>
-
-
-
-<div class="hld-container">
-
-<div class="hld-box">
-<b>Probe Agent Module</b>
-<ul>
-<li>Deployed across multiple cities using Raspberry Pi</li>
-<li>Conducts periodic network KPI tests</li>
-</ul>
-</div>
-
-<div class="hld-arrow">⬇</div>
-
-<div class="hld-box">
-<b>Network</b>
-<ul>
-<li>Latency</li>
-<li>Jitter</li>
-<li>Packet Loss</li>
-<li>Throughput</li>
-</ul>
-</div>
-
-<div class="hld-arrow">⬇</div>
-
-<div class="hld-box">
-<b>IPI Ingestion Module</b>
-<ul>
-<li>Transmits collected data to cloud</li>
-</ul>
-</div>
-
-<div class="hld-arrow">⬇</div>
-
-<div class="hld-box">
-<b>Processing Logic</b>
-<ul>
-<li>Parses & stores metrics securely</li>
-<li>Validates certificates</li>
-<li>Enriches test results</li>
-</ul>
-</div>
-
-<div class="hld-arrow">⬇</div>
-
-<div class="hld-box">
-<b>Visualization (Grafana)</b>
-<ul>
-<li>Real-time dashboards for KPI monitoring</li>
-</ul>
-</div>
-
-</div>
-
-
 </div>
 </div>
 </div>
@@ -729,6 +695,57 @@ To ensure the effectiveness and robustness of the predictive model, its performa
 <button>Download CV</button></a>
 </section>
 
+
+<div id="hldModal" class="hld-modal">
+
+<div style="position:relative;">
+
+<div class="hld-row">
+<div class="hld-box" style="animation-delay:0s;">
+<b>Probe Agent Module</b><br>
+• KPI Test using Pi<br>
+• Multi-city Deployment
+</div>
+</div>
+
+<div class="hld-row">
+<div class="hld-box" style="animation-delay:1s;">
+<b>Network</b><br>
+Latency<br>
+Jitter<br>
+Packet Loss<br>
+Throughput
+</div>
+
+<div class="hld-box" style="animation-delay:2s;">
+<b>IPI Ingestion</b><br>
+Cloud Transmission
+</div>
+</div>
+
+<div class="hld-row">
+<div class="hld-box" style="animation-delay:3s;">
+<b>Processing Logic</b><br>
+Parse & Store<br>
+Certificate Validation
+</div>
+</div>
+
+<div class="hld-row">
+<div class="hld-box" style="animation-delay:4s;">
+<b>Grafana Dashboard</b><br>
+Real-time KPI Visualization
+</div>
+</div>
+
+<div class="packet"></div>
+
+</div>
+
+<span onclick="closeHLD()" style="position:absolute;top:20px;right:40px;color:#BB86FC;font-size:30px;cursor:pointer;">✖</span>
+
+</div>
+     
 <footer>
 <p>Email: tarunikaofficial19@gmail.com</p>
 </footer>
@@ -784,11 +801,21 @@ document.querySelectorAll("section").forEach(section => {
 section.classList.add("fade-in");
 observer.observe(section);
 });
-     
+
+
+function openHLD(){
+document.getElementById("hldModal").style.display="flex";
+}
+
+function closeHLD(){
+document.getElementById("hldModal").style.display="none";
+}
+
 </script>
     
 </body>
 </html>
+
 
 
 
