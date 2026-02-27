@@ -272,7 +272,7 @@ cursor:pointer;
 }
 
 .click-indicator{
-display:block;
+display:none;
 font-size:12px;
 color:#ffa600;
 opacity:0.7;
@@ -290,7 +290,10 @@ from{transform:scale(0.8);opacity:0;}
 to{transform:scale(1);opacity:1;}
 }
 
-
+.expandable.active .click-indicator{
+display:block;
+margin-top:4px;
+}
      
 </style>
 
@@ -387,7 +390,7 @@ Strong foundation in communication networks, signal processing and embedded syst
 <!-- LEO KPI TOOL -->
 <div class="card expandable" onclick="toggleProject(this)">
 <div class="expandable-header">
-<h4 onclick="openHLD('leo')" class="arch-click">
+<h4 onclick="event.stopPropagation(); openHLD('leo')" class="arch-click">
 Low Earth Orbiting Satellite Network KPI Tool
 <span class="click-indicator">Click to View HLD ▶</span>
 </h4>
@@ -408,7 +411,7 @@ The collected KPI data was visualized using Grafana dashboards to enable real-ti
 <!-- BOTNET -->
 <div class="card expandable" onclick="toggleProject(this)">
 <div class="expandable-header">
-<h4 onclick="openHLD('botnet')" class="arch-click">
+<h4 onclick="event.stopPropagation(); openHLD('botnet')" class="arch-click">
 Botnet Prediction using Machine Learning
 <span class="click-indicator">Click to View HLD ▶</span>
 </h4>
@@ -428,7 +431,7 @@ Through this project, I gained practical experience in analyzing network traffic
 <!-- ARDUINO ROBOT -->
 <div class="card expandable" onclick="toggleProject(this)">
 <div class="expandable-header">
-<h4 onclick="openHLD('robot')" class="arch-click">
+<h4 onclick="event.stopPropagation(); openHLD('robot')" class="arch-click">
 Line Following & Obstacle Detection Robot using Arduino
 <span class="click-indicator">Click to View HLD ▶</span>
 </h4>
@@ -447,16 +450,15 @@ The system was further optimized to process real-time inputs and execute respons
 <!-- DIABETES -->
 <div class="card expandable" onclick="toggleProject(this)">
 <div class="expandable-header">
-<h4 onclick="openHLD('diabetes')" class="arch-click">
+<h4 onclick="event.stopPropagation(); openHLD('diabetes')" class="arch-click">
 Diabetes Prediction using Machine Learning
-
+<span class="click-indicator">Click to View HLD ▶</span>
 </h4>
 <span class="expand-icon">+</span>
 </div>
 
 <div class="edu-cards">
 <div class="edu-card">
-<h4></h4><span class="click-indicator">Click to View HLD ▶</span></h4>
 <p>I implemented supervised machine learning algorithms to perform predictive analysis on healthcare datasets, with the objective of identifying individuals at risk of developing diabetes based on relevant medical attributes. The project involved comprehensive data cleaning and preprocessing techniques, including handling missing values, normalizing input features, and transforming categorical variables to improve data quality and model reliability. A classification model was then developed to predict potential diabetic cases by analyzing patterns and correlations within the dataset.<br>
 To ensure the effectiveness and robustness of the predictive model, its performance was evaluated using standard validation techniques such as accuracy, precision, recall, and confusion matrix analysis. This project strengthened my understanding of data preprocessing, feature engineering, predictive modeling, and performance evaluation in supervised learning, while also highlighting the practical application of machine learning techniques in healthcare-based risk assessment systems.</p>
 </div>
@@ -815,6 +817,7 @@ modal.style.display="none";
     
 </body>
 </html>
+
 
 
 
