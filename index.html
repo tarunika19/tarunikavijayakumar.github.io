@@ -294,6 +294,26 @@ to{transform:scale(1);opacity:1;}
 display:block;
 margin-top:4px;
 }
+
+
+.cert-btn{
+margin-top:10px;
+padding:6px 14px;
+background:#BB86FC;
+color:#121212;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-size:13px;
+transition:0.3s ease;
+}
+
+.cert-btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 10px #BB86FC;
+}
+
+
      
 </style>
 
@@ -669,6 +689,10 @@ To ensure the effectiveness and robustness of the predictive model, its performa
 <ul>
 <li>JNCIA Proffessional Certificate with 90%</li>
 </ul>
+<button class="cert-btn"
+onclick="event.stopPropagation(); openPDF('jncia.pdf')">
+View Certificate
+</button>
 </div>
 </div>
 
@@ -758,6 +782,25 @@ To ensure the effectiveness and robustness of the predictive model, its performa
 <img src="diabetes.png">
 </div>
 </div>
+
+
+<!-- CERTIFICATE PDF POPUP -->
+<div id="pdfModal" class="hld-modal">
+
+<div style="position:relative; width:80%; height:90%;">
+
+<iframe id="pdfViewer"
+style="width:100%; height:100%; border:none; border-radius:10px;">
+</iframe>
+
+<span onclick="closePDF()"
+style="position:absolute;top:-35px;right:0;color:#BB86FC;font-size:30px;cursor:pointer;">
+✖
+</span>
+
+</div>
+
+</div>
      
 <footer>
 <p>Email: tarunikaofficial19@gmail.com</p>
@@ -825,10 +868,23 @@ modal.style.display="none";
 });
 }
 
+
+function openPDF(file){
+document.getElementById("pdfModal").style.display="flex";
+document.getElementById("pdfViewer").src=file;
+}
+
+function closePDF(){
+document.getElementById("pdfModal").style.display="none";
+document.getElementById("pdfViewer").src="";
+}
+
+     
 </script>
     
 </body>
 </html>
+
 
 
 
