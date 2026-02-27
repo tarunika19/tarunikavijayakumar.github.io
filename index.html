@@ -269,24 +269,71 @@ transform:translateY(0);
 }
 }
 
-.packet{
-width:10px;
-height:10px;
-background:#BB86FC;
-border-radius:50%;
+.flow-arrow{
 position:absolute;
-animation:packetMove 5s linear infinite;
-box-shadow:0 0 10px #BB86FC;
+font-size:22px;
+color:#ffa600;
+opacity:0;
+animation:flowMove 6s linear infinite;
+text-shadow:0 0 8px #ffa600;
 }
 
-@keyframes packetMove{
-0%{top:120px;left:45%;}
-25%{top:250px;left:45%;}
-50%{top:250px;left:60%;}
-75%{top:400px;left:60%;}
-100%{top:550px;left:60%;}
+.arrow1{animation-delay:0s;}
+.arrow2{animation-delay:1.5s;}
+.arrow3{animation-delay:3s;}
+.arrow4{animation-delay:4.5s;}
+
+@keyframes flowMove{
+
+0%{
+top:120px;
+left:48%;
+opacity:0;
 }
 
+10%{opacity:1;}
+
+25%{
+top:250px;
+left:48%;
+}
+
+50%{
+top:250px;
+left:62%;
+}
+
+75%{
+top:400px;
+left:62%;
+}
+
+100%{
+top:550px;
+left:62%;
+opacity:0;
+}
+
+}
+
+.satellite{
+position:absolute;
+font-size:28px;
+top:40px;
+left:40%;
+animation:orbit 12s linear infinite;
+filter:drop-shadow(0 0 6px #ffa600);
+}
+
+/* Orbit Movement */
+@keyframes orbit{
+0%{transform:translateX(-200px) translateY(0px) rotate(0deg);}
+25%{transform:translateX(0px) translateY(20px) rotate(10deg);}
+50%{transform:translateX(200px) translateY(0px) rotate(0deg);}
+75%{transform:translateX(0px) translateY(-20px) rotate(-10deg);}
+100%{transform:translateX(-200px) translateY(0px) rotate(0deg);}
+}
+     
      
 </style>
 
@@ -738,8 +785,13 @@ Real-time KPI Visualization
 </div>
 </div>
 
-<div class="packet"></div>
-
+<div style="position:relative;">
+<div class="flow-arrow arrow1">➤</div>
+<div class="flow-arrow arrow2">➤</div>
+<div class="flow-arrow arrow3">➤</div>
+<div class="flow-arrow arrow4">➤</div>
+<div class="satellite">🛰️</div>
+     
 </div>
 
 <span onclick="closeHLD()" style="position:absolute;top:20px;right:40px;color:#BB86FC;font-size:30px;cursor:pointer;">✖</span>
@@ -815,6 +867,7 @@ document.getElementById("hldModal").style.display="none";
     
 </body>
 </html>
+
 
 
 
