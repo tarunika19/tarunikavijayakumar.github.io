@@ -225,139 +225,6 @@ background-size:110%;
 }
 
 
-
-/* HLD POPUP */
-
-.hld-modal{
-display:none;
-position:fixed;
-z-index:9999;
-left:0;
-top:0;
-width:100vw;
-height:100vh;
-background:rgba(0,0,0,0.95);
-backdrop-filter:blur(8px);
-justify-content:center;
-align-items:center;
-overflow:hidden;
-}
-
-.hld-box{
-background:#1e1e1e;
-border:2px solid #BB86FC;
-padding:15px;
-border-radius:10px;
-color:#E0E0E0;
-min-width:200px;
-opacity:0;
-transform:translateY(40px);
-animation:fadeUp 1s forwards;
-}
-
-.hld-row{
-display:flex;
-gap:40px;
-justify-content:center;
-align-items:center;
-margin:20px;
-}
-
-@keyframes fadeUp{
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-.flow-arrow{
-position:absolute;
-font-size:24px;
-color:#ffa600;
-opacity:0;
-z-index:10;
-animation:flowMove 6s linear infinite;
-}
-
-.arrow1{animation-delay:0s;}
-.arrow2{animation-delay:1.5s;}
-.arrow3{animation-delay:3s;}
-.arrow4{animation-delay:4.5s;}
-
-@keyframes flowMove{
-
-0%{
-top:120px;
-left:48%;
-opacity:0;
-}
-
-10%{opacity:1;}
-
-25%{
-top:250px;
-left:48%;
-}
-
-50%{
-top:250px;
-left:62%;
-}
-
-75%{
-top:400px;
-left:62%;
-}
-
-100%{
-top:550px;
-left:62%;
-opacity:0;
-}
-
-}
-
-.satellite{
-position:absolute;
-font-size:24px;
-top:90px;
-left:55%;
-animation:satMove 10s linear infinite;
-}
-
-/* Orbit Movement */
-@keyframes satMove{
-0%{transform:translate(0px,0px);}
-25%{transform:translate(80px,30px);}
-50%{transform:translate(160px,0px);}
-75%{transform:translate(80px,-30px);}
-100%{transform:translate(0px,0px);}
-} 
-
-.arch-click{
-cursor:pointer;
-position:relative;
-transition:0.3s;
-}
-
-.arch-click:hover{
-color:#ffa600;
-}
-
-.click-indicator{
-display:block;
-font-size:12px;
-color:#ffa600;
-opacity:0.7;
-animation:pulseClick 1.5s infinite;
-}
-
-@keyframes pulseClick{
-0%{opacity:0.3;}
-50%{opacity:1;}
-100%{opacity:0.3;}
-}
-     
 </style>
 
 </head>
@@ -453,9 +320,8 @@ Strong foundation in communication networks, signal processing and embedded syst
 <!-- LEO KPI TOOL -->
 <div class="card expandable" onclick="toggleProject(this)">
 <div class="expandable-header">
-<h4 onclick="openHLD()" class="arch-click">
+<h4>
 Low Earth Orbiting Satellite Network KPI Tool
-<span class="click-indicator">Click to View Architecture ▶</span>
 </h4>
 <span class="expand-icon">+</span>
 </div>
@@ -766,62 +632,6 @@ To ensure the effectiveness and robustness of the predictive model, its performa
 <button>Download CV</button></a>
 </section>
 
-
-<div id="hldModal" class="hld-modal">
-
-<div style="position:relative;">
-
-<div class="hld-row">
-<div class="hld-box" style="animation-delay:0s;">
-<b>Probe Agent Module</b><br>
-• KPI Test using Pi<br>
-• Multi-city Deployment
-</div>
-</div>
-
-<div class="hld-row">
-<div class="hld-box" style="animation-delay:1s;">
-<b>Network</b><br>
-Latency<br>
-Jitter<br>
-Packet Loss<br>
-Throughput
-</div>
-
-<div class="hld-box" style="animation-delay:2s;">
-<b>IPI Ingestion</b><br>
-Cloud Transmission
-</div>
-</div>
-
-<div class="hld-row">
-<div class="hld-box" style="animation-delay:3s;">
-<b>Processing Logic</b><br>
-Parse & Store<br>
-Certificate Validation
-</div>
-</div>
-
-<div class="hld-row">
-<div class="hld-box" style="animation-delay:4s;">
-<b>Grafana Dashboard</b><br>
-Real-time KPI Visualization
-</div>
-</div>
-
-<!-- ADD THIS HERE -->
-<div class="flow-arrow arrow1">➤</div>
-<div class="flow-arrow arrow2">➤</div>
-<div class="flow-arrow arrow3">➤</div>
-<div class="flow-arrow arrow4">➤</div>
-
-<div class="satellite">🛰️</div>
-
-<span onclick="closeHLD()" 
-style="position:absolute;top:10px;right:20px;color:#ffa600;font-size:28px;cursor:pointer;z-index:50;">
-✖
-</span>
-
 </div>
 </div>
      
@@ -882,18 +692,11 @@ observer.observe(section);
 });
 
 
-function openHLD(){
-document.getElementById("hldModal").style.display="flex";
-}
-
-function closeHLD(){
-document.getElementById("hldModal").style.display="none";
-}
-
 </script>
     
 </body>
 </html>
+
 
 
 
